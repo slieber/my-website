@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SL on SL</title>
+    <link>/</link>
+    <description>Recent content in SL on SL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0700</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Perspective Taking: Motivation and Impediment to Shared Reality</title>
+      <link>/publication/pt_and_sr_article/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 -0700</pubDate>
+      
+      <guid>/publication/pt_and_sr_article/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning in R Tutorial</title>
+      <link>/post/ml-tutorial/</link>
+      <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ml-tutorial/</guid>
+      <description>&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Machine learning is the process of building predictive models. At the core of machine learning is building models which offer predictive power and can be used to understand data we have yet to collect. In scientific practice, we have all used machine learning before when we run regression models! However, machine learning is a complex topic with a wide range of possiblities and applications.&lt;/p&gt;
+&lt;p&gt;We encounter applications for machine learning each day. Machine learning algorithms are used to make critical decisions in medical diagnosis. Media sites rely on machine learning to sift through millions of options to give you song or movie recommendations and retailers use it to gain insight into their customers’ purchasing behavior.&lt;/p&gt;
+&lt;p&gt;This presentation aims to present a basic understanding of both regression and classification modeling, as well as how to leverage the package &lt;code&gt;caret&lt;/code&gt; to carryout these analyses.&lt;/p&gt;
+&lt;div id=&#34;supervised-vs.unsupervised-learning&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Supervised vs. Unsupervised Learning&lt;/h3&gt;
+&lt;p&gt;There are two main types of machine learning algorithms: &lt;em&gt;supervised&lt;/em&gt; and &lt;em&gt;unsupervised&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Supervised learning&lt;/strong&gt; models are those where the machine learning model we build is based off of a known quantity. In this case, we already know the “correct answers” and we train the algorithm to find patterns in our data in order to reach the best performance in predicting a known quanity. We can then apply these models to never-before-seen data to make predictions. Examples include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Classification Models&lt;/em&gt;: Making categorical predictions such as predicting whether a tumor is benign or malignant or whether an email is spam or not.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Regression Models&lt;/em&gt;: Making continuous predictions such as predicting changes in temperature or predicting someone’s weight.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Unsupervised learning&lt;/strong&gt; models are those where the machine learning model derives patterns and information from data while determining the known quantity itself. In this case, there are no known “correct answers” but rather the goal is to find the underlying structure or distribution in the data in order to learn more about the data. Examples include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Clustering Models&lt;/em&gt;: Finding hidden patterns of inherent groupings in data such as grouping customers by purchasing behavior.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Association Models&lt;/em&gt;: Findings rules that describe large portions of your data, such as “people that buy X also tend to buy Y”.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;ml_workflow.svg&#34; /&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;steps-of-machine-learning-considerations&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Steps of Machine Learning &amp;amp; Considerations&lt;/h1&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Data Splitting&lt;/li&gt;
+&lt;li&gt;Tuning&lt;/li&gt;
+&lt;li&gt;Cross-validation&lt;/li&gt;
+&lt;li&gt;Model Testing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;data-splitting-partitioning&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Data Splitting/ Partitioning&lt;/h3&gt;
+&lt;p&gt;Machine learning requires that you must build your model using a separate dataset than the one used to test the accuracy of your model. Since datasets can be hard to come by, data splitting is used to split a single dataset into a training set and a testing set. You typically want more data in the training set since this data is being used to build your model than in the testing set. Some proportions that are used typically are 70% training, 30% testing, but you can adjust these.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tuning&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tuning&lt;/h3&gt;
+&lt;p&gt;In machine learning, there are two types of parameters: model parameters and hyperparameters. What’s the difference?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Model parameters are estimated from the data (i.e., coefficients in linear regression)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hyperparameters are values that specify the settings of a ML algorithm that can be “tuned” by the researhcer prior to training a model. Different algorithms have different hyperparameters. You don’t know the best values of hyperparameters prior to training a model - have to rely on rules of thumb and/or try to find the best values through trial and error. This is the tuning process.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cross-validation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Cross-Validation&lt;/h3&gt;
+&lt;p&gt;Earlier we talked about splitting our our dataset into training and testing sets in order to build a model that generalizess well to new incoming data. However, this process of training and testing is less than ideal. When we eventually test our data against the remaining data in our test set we are only seeing what the error is for that exact grouping of the test data. Using a single testing set to evaluate the accuracy of one’s models can have limitations in practice because the testing set may not be representative of the dataset as a whole.&lt;/p&gt;
+&lt;p&gt;Cross-validation is a statistical technique for splitting the training set multiple times into training/testing sets. Each of these training/testing sets is evaluated for error, and the error across all of the sets is averaged. This provides a more accurate assessment of the model’s performance.&lt;/p&gt;
+&lt;p&gt;There are various cross-validation techniques available in R, but the ones we will cover are k-fold and leave-one-one cross-validation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;k-fold cross-validation&lt;/strong&gt;: randomly splits the dataset into k chunks (aka, folds) of roughly equal size, and these chunks are split into training/testing sets. The error across all chunks is averaged. k can be any number between 2 and the number of observations in the full dataset, but it is most commonly a value between 3 and 10.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;leave-one-out cross-validation&lt;/strong&gt;: the case where k=n; this results in the training sets containing n-1 observations each, and each test set containing a single observation&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;overfitting&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Overfitting&lt;/h3&gt;
+&lt;p&gt;A very &lt;strong&gt;important&lt;/strong&gt; consideration in the building of predictive models is overfitting. The data in the training set is going to reflect true, underlying relationships among variables, but there will also be an amount of error that is unique to the training set. &lt;strong&gt;Overfitting is the problem of fitting a model too well to the training set.&lt;/strong&gt; &lt;strong&gt;This could result in the model having poor predictive power when applied to a new dataset.&lt;/strong&gt; During model training, you want to meet a balance between fitting a model with good accuracy (i.e., one that reduces error), without trying to account for so much error in the training model that you overfit the model.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;terminology-break-algorithms-vs-models&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Terminology Break: Algorithms vs Models&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Algorithms&lt;/strong&gt;: a set of steps that are passed into a model for processing&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Models&lt;/strong&gt;: a complex object that takes an input parameter and gives an output&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Features&lt;/strong&gt;: a variable in machine learning lingo&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;common-machine-learning-algorithms&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Common Machine Learning Algorithms&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Linear regression, lm()&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Logistic regression, glm()&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Support vector machines, svm() or svmLinear()&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Random forests, randomForest()&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Elastic Nets, glmnet()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And there are hundreds more… for a full list: names(getModelInfo())&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-regression-example&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;A Regression Example&lt;/h1&gt;
+&lt;p&gt;Regression is used to perform machine learning with a continuous outcome variable. The dataset we will use for this example is called Prestige from the &lt;code&gt;car&lt;/code&gt; package. This dataset contains various features across a variety of occupations, such as education, percentage of incumbents who are women, and the perceived prestige of the occupation.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(Prestige) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                     education income women prestige census type
+## gov.administrators      13.11  12351 11.16     68.8   1113 prof
+## general.managers        12.26  25879  4.02     69.1   1130 prof
+## accountants             12.77   9271 15.70     63.4   1171 prof
+## purchasing.officers     11.42   8865  9.11     56.8   1175 prof
+## chemists                14.62   8403 11.68     73.5   2111 prof
+## physicists              15.64  11030  5.13     77.6   2113 prof&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(Prestige)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    102 obs. of  6 variables:
+##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
+##  $ income   : int  12351 25879 9271 8865 8403 11030 8258 14163 11377 11023 ...
+##  $ women    : num  11.16 4.02 15.7 9.11 11.68 ...
+##  $ prestige : num  68.8 69.1 63.4 56.8 73.5 77.6 72.6 78.1 73.1 68.8 ...
+##  $ census   : int  1113 1130 1171 1175 2111 2113 2133 2141 2143 2153 ...
+##  $ type     : Factor w/ 3 levels &amp;quot;bc&amp;quot;,&amp;quot;prof&amp;quot;,&amp;quot;wc&amp;quot;: 2 2 2 2 2 2 2 2 2 2 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Prestige$income &amp;lt;- as.numeric(Prestige$income)
+Prestige$census &amp;lt;- as.numeric(Prestige$census)
+Prestige$type &amp;lt;- as.numeric(Prestige$type)
+
+Prestige &amp;lt;- subset(Prestige, select = c(education, income, women, prestige, census))&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;data-splitting&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data Splitting&lt;/h2&gt;
+&lt;p&gt;Before you perform model training, you should partition the original dataset into a training set and a testing set. Model training is performed only on the training set.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;createDataPartition&lt;/code&gt; is used to split the original data into a training set and a testing set. The inputs into createDataPartition include y, times, p, and list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;y&lt;/strong&gt; = the outcome variable&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;times&lt;/strong&gt; = the number of times you want to split the data&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;p&lt;/strong&gt; = the percentage of the data that goes into the training set&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;list&lt;/strong&gt; = FALSE gives the results in a matrix with the row numbers of the partition that you can pass back into the training data to effectively split it&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Randomly sample from the original dataset
+set.seed(50) # set.seed is a random number generator; the value in parentheses is arbitrary, and a seed is only set so that we can reproduce these same results next time we run the analysis.
+
+# Split the original dataset into a training set and a testing set
+partition_data &amp;lt;- createDataPartition(Prestige$income, times = 1, p = .7, list = FALSE)
+
+training.set &amp;lt;- Prestige[partition_data, ] # Training set
+testing.set &amp;lt;- Prestige[-partition_data, ] # Testing set&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Now that we have split the data into a training set and testing set, we can now move on to training a model using the training set. We will go through just a few of the different algorithms and cross-validation techniques you can use for model training.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-training-in-caret&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Model Training in Caret&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;caret&lt;/code&gt; (Classification And REgression Training) is an R package that consolidates all of the many various machine learning algorithms into one, easy-to-use interface. This allows us to test any model we want without having to load separate packages and learn a gazillion different syntax requirements each time we want to test a different type of model.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;train&lt;/code&gt; function is used for model training. It uses the following inputs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;y&lt;/strong&gt; = the outcome variable; y ~. means predict y from all other variables in the dataset&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;method&lt;/strong&gt; = the machine learning algorithm&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;trControl&lt;/strong&gt; = the cross-validation method&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tuneGrid&lt;/strong&gt; = a data frame of the hyperparameters that you want to be evaluated during model training&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;preProc&lt;/strong&gt; = any pre-processing adjustments that you want done on the predictor data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;first-lets-try-a-linear-regression-algorithm&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;First, let’s try a Linear Regression algorithm:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Specify the cross-validation method(s)
+train.control &amp;lt;- trainControl(method = &amp;quot;cv&amp;quot;, number = 10) # k-folds CV with k=10
+train.control2 &amp;lt;- trainControl(method = &amp;quot;LOOCV&amp;quot;) # leave-one-out CV
+
+
+# Use the train function to perform model training
+linear.model &amp;lt;- train(income ~. , 
+                      data = training.set, 
+                      method = &amp;quot;lm&amp;quot;, 
+                      trControl = train.control, 
+                      preProc = c(&amp;quot;center&amp;quot;)) 
+
+## change train.control to train.control2 to see the results using LOOCV instead
+
+
+# Look at the results from model training
+linear.model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Linear Regression 
+## 
+## 74 samples
+##  4 predictor
+## 
+## Pre-processing: centered (4) 
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 67, 66, 66, 67, 67, 66, ... 
+## Resampling results:
+## 
+##   RMSE      Rsquared   MAE     
+##   2385.264  0.7565312  1644.348
+## 
+## Tuning parameter &amp;#39;intercept&amp;#39; was held constant at a value of TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;linear.model$results&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   intercept     RMSE  Rsquared      MAE   RMSESD RsquaredSD    MAESD
+## 1      TRUE 2385.264 0.7565312 1644.348 1410.487  0.1716874 725.1658&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Test the predictive ability of the model in the testing set
+linear.predict &amp;lt;- predict(linear.model, testing.set) # Predict values in the testing set
+
+postResample(linear.predict, testing.set$income) # the accuracy of the model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         RMSE     Rsquared          MAE 
+## 2603.8964002    0.6503883 1856.9520734&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;second-lets-try-a-support-vector-machine-linear-modeling-algorithm&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Second, let’s try a Support Vector Machine Linear modeling algorithm:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Specify the cross-validation method(s)
+train.control &amp;lt;- trainControl(method = &amp;quot;cv&amp;quot;, number = 10) # k-folds CV with k=10
+train.control2 &amp;lt;- trainControl(method = &amp;quot;LOOCV&amp;quot;) # leave-one-out CV
+
+
+# The linear model did not have any hyperparameters that we could perform tuning on, but SVM does
+# Model tuning
+svmL.info &amp;lt;- getModelInfo(&amp;quot;svmLinear&amp;quot;) #getModelInfo can be used to inspect a specific ML algorithm
+svmL.info$svmLinear$parameters #look at the algorithm parameters that can be modifed&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   parameter   class label
+## 1         C numeric  Cost&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tune.grid &amp;lt;- expand.grid(C = c(0.001, 0.01, 0.1, 1, 10, 100)) #expand.grid is the function that allows you to specify values that you want to feed into the model training function
+
+
+# Model training
+svmL.model &amp;lt;- train(income ~. , 
+                    data = training.set, 
+                    method = &amp;quot;svmLinear&amp;quot;, 
+                    trControl = train.control, 
+                    tuneGrid = tune.grid, 
+                    preProc = c(&amp;quot;center&amp;quot;))
+
+
+# Look at the results from model training
+svmL.model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Support Vector Machines with Linear Kernel 
+## 
+## 74 samples
+##  4 predictor
+## 
+## Pre-processing: centered (4) 
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 66, 67, 67, 66, 66, 67, ... 
+## Resampling results across tuning parameters:
+## 
+##   C      RMSE      Rsquared   MAE     
+##   1e-03  3905.451  0.7661535  2690.535
+##   1e-02  2585.026  0.8256985  1664.158
+##   1e-01  2230.840  0.8290528  1422.342
+##   1e+00  2249.864  0.8231544  1458.861
+##   1e+01  2253.776  0.8218066  1465.532
+##   1e+02  2253.326  0.8213564  1466.097
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was C = 0.1.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;svmL.model$results&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       C     RMSE  Rsquared      MAE   RMSESD RsquaredSD    MAESD
+## 1 1e-03 3905.451 0.7661535 2690.535 1907.103  0.1537170 731.7471
+## 2 1e-02 2585.026 0.8256985 1664.158 1885.387  0.1501561 910.9554
+## 3 1e-01 2230.840 0.8290528 1422.342 1786.866  0.1529150 868.7034
+## 4 1e+00 2249.864 0.8231544 1458.861 1750.106  0.1534310 829.3265
+## 5 1e+01 2253.776 0.8218066 1465.532 1743.592  0.1541192 824.6025
+## 6 1e+02 2253.326 0.8213564 1466.097 1742.954  0.1539033 823.7594&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Testing predictive ability of model in testing set
+svmL.predict &amp;lt;- predict(svmL.model, testing.set) 
+
+postResample(svmL.predict, testing.set$income)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         RMSE     Rsquared          MAE 
+## 2073.5726601    0.6624213 1260.9135906&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;third-lets-try-a-random-forest-modeling-algorithm&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Third, let’s try a Random Forest modeling algorithm:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Specify the cross-validation method(s)
+train.control &amp;lt;- trainControl(method = &amp;quot;cv&amp;quot;, number = 10) # k-folds CV with k=10
+train.control2 &amp;lt;- trainControl(method = &amp;quot;LOOCV&amp;quot;) # leave-one-out CV
+
+
+# Model tuning
+rf.info &amp;lt;- getModelInfo(&amp;quot;rf&amp;quot;)
+rf.info$rf$parameters&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   parameter   class                         label
+## 1      mtry numeric #Randomly Selected Predictors&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tune.grid &amp;lt;- expand.grid(mtry = c(2, 3, 4))
+
+
+# Model training
+rf.model &amp;lt;- train(income ~. , 
+                  data = training.set, 
+                  method = &amp;quot;rf&amp;quot;, 
+                  trControl = train.control, 
+                  tuneGrid = tune.grid,
+                  preProc = c(&amp;quot;center&amp;quot;))
+
+
+# Look at the results from model training
+rf.model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Random Forest 
+## 
+## 74 samples
+##  4 predictor
+## 
+## Pre-processing: centered (4) 
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 66, 68, 66, 67, 67, 66, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  RMSE      Rsquared   MAE     
+##   2     2663.359  0.7648934  1748.124
+##   3     2620.256  0.7683988  1701.209
+##   4     2628.885  0.7761530  1681.125
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was mtry = 3.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rf.model$results&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   mtry     RMSE  Rsquared      MAE   RMSESD RsquaredSD    MAESD
+## 1    2 2663.359 0.7648934 1748.124 1369.578  0.1218676 678.6863
+## 2    3 2620.256 0.7683988 1701.209 1344.739  0.1093180 667.6530
+## 3    4 2628.885 0.7761530 1681.125 1311.148  0.1030607 649.6137&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Testing predictive ability of model in testing set
+rf.predict &amp;lt;- predict(rf.model, testing.set)
+
+postResample(rf.predict, testing.set$income) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         RMSE     Rsquared          MAE 
+## 2192.4297434    0.6537466 1257.4565071&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;regression-model-comparisons-which-model-did-the-best&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Regression Model Comparisons: Which model did the best?&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;RMSE_Training &amp;lt;- c(linear.model$results[1,2], svmL.model$results[1,2], rf.model$results[1,2])
+
+Rsq_Training &amp;lt;- c(linear.model$results[1,3], svmL.model$results[1,3], rf.model$results[1,3])
+
+RMSE_Testing &amp;lt;- c(postResample(linear.predict, testing.set$income)[1], postResample(svmL.predict, testing.set$income)[1], postResample(rf.predict, testing.set$income)[1])
+
+Rsq_Testing &amp;lt;- c(postResample(linear.predict, testing.set$income)[2], postResample(svmL.predict, testing.set$income)[2], postResample(rf.predict, testing.set$income)[2])
+
+model_names &amp;lt;- c(&amp;quot;Linear Regression&amp;quot;, &amp;quot;Support Vector Machine&amp;quot;, &amp;quot;Random Forest&amp;quot;)
+
+difference_rmse &amp;lt;- as.numeric(RMSE_Testing) - as.numeric(RMSE_Training)
+difference_rsq &amp;lt;- as.numeric(Rsq_Testing) - as.numeric(Rsq_Training)
+
+data.frame(cbind(model_names, RMSE_Training, Rsq_Training, RMSE_Testing, Rsq_Testing, difference_rmse, difference_rsq))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in data.row.names(row.names, rowsi, i): some row.names duplicated:
+## 2,3 --&amp;gt; row.names NOT used&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              model_names    RMSE_Training      Rsq_Training
+## 1      Linear Regression 2385.26433640092 0.756531232836151
+## 2 Support Vector Machine 3905.45105096938 0.766153542209208
+## 3          Random Forest 2663.35862739676 0.764893442474347
+##       RMSE_Testing       Rsq_Testing   difference_rmse     difference_rsq
+## 1 2603.89640015345 0.650388341048599  218.632063752524 -0.106142891787551
+## 2 2073.57266011341 0.662421333066346 -1831.87839085597 -0.103732209142862
+## 3 2192.42974344621 0.653746596807768  -470.92888395055 -0.111146845666579&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-classification-example&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;A Classification Example&lt;/h1&gt;
+&lt;p&gt;Classification is used to perform machine learning with a categorical outcome variable. The dataset we will use for this example is called Iris from base R. This dataset contains various features for three species of flowers (petal width, petal length, sepal width, sepal length).&lt;/p&gt;
+&lt;p&gt;As with our regression example above, we will try to clasify ‘Species’ of flower using an elastic net, a support vector machine, and a random forest model. We will use leave-one-out cross-validation in the training data and the final model accuracies will be tested against our holdout sample.&lt;/p&gt;
+&lt;p&gt;First we will load our dataset:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Load the data, and examine it&amp;#39;s structure
+iris_data &amp;lt;- data.frame(iris)
+head(iris_data) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(iris_data) # Everything is numeric except for our categorical variable, which is a factor. We are good to go.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &amp;quot;setosa&amp;quot;,&amp;quot;versicolor&amp;quot;,..: 1 1 1 1 1 1 1 1 1 1 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;data-splitting-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data Splitting&lt;/h2&gt;
+&lt;p&gt;Now we will set the random number generator seed for reproducibility and partition our data into training and testing sets.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Randomly sample from the original dataset
+set.seed(28) # set.seed is a random number generator; the value in parentheses is arbitrary, and a seed is only set so that we can reproduce these same results next time we run the analysis.
+
+# Split the original dataset into a training set and a testing set
+# We are using species to partition so that we don&amp;#39;t end up with an uneven amount of one species in either training or testing sets.
+partition_data &amp;lt;- createDataPartition(iris_data$Species, times = 1, p = .7, list = FALSE)
+
+# Assign sets
+training.set &amp;lt;- iris_data[partition_data, ] # Training set
+testing.set &amp;lt;- iris_data[-partition_data, ] # Testing set
+
+# Sanity Check: Is data partitioned appropriately, do we have equal numbers of observations for our outcome variable?
+nrow(training.set)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 105&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(training.set$Species)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     setosa versicolor  virginica 
+##         35         35         35&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nrow(testing.set)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 45&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(testing.set$Species)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     setosa versicolor  virginica 
+##         15         15         15&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-training-in-caret-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Model Training in Caret&lt;/h2&gt;
+&lt;p&gt;Next, we will try out our three models.&lt;/p&gt;
+&lt;p&gt;Since the outcome variable we are predicting “Species” has more than two factors, we cannot use &lt;code&gt;glm&lt;/code&gt; to run a logistic regression.&lt;/p&gt;
+&lt;p&gt;Instead, we will use &lt;code&gt;glmnet&lt;/code&gt; to run an elastic net algorithm that can handle more factors in our outcome variable.&lt;/p&gt;
+&lt;div id=&#34;first-lets-try-an-elastic-net&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;First, let’s try an Elastic Net:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Specify the cross-validation method(s)
+train.control &amp;lt;- trainControl(method = &amp;quot;cv&amp;quot;, number = 10, # k-folds CV with k=10
+                              classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary)# save predictions for ROC
+
+train.control2 &amp;lt;- trainControl(method = &amp;quot;LOOCV&amp;quot;,
+                               classProbs = TRUE,
+                               savePredictions = TRUE,
+                               summaryFunction = multiClassSummary) # leave-one-out CV, and save predictions for ROC 
+
+# Example Model Tuning for Elastic Net
+#glmnet.info &amp;lt;- getModelInfo(&amp;quot;glmnet&amp;quot;)
+#glmnet.info$glmnet$parameters
+#tune.grid &amp;lt;- expand.grid(alpha = 0:1,
+                        # lambda = seq(0.0001, 1, length = 100))
+
+# Use the train function to perform model training
+glmnet.model &amp;lt;- train(Species ~. , 
+                      data = training.set, 
+                      method = &amp;quot;glmnet&amp;quot;,
+                      trControl = train.control2, # change this to train.control to try k-fold CV
+                      #tuneGrid = tune.grid,
+                      preProc = c(&amp;quot;center&amp;quot;)) 
+
+# Look at the results from model training and ROC Curves
+glmnet.model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## glmnet 
+## 
+## 105 samples
+##   4 predictor
+##   3 classes: &amp;#39;setosa&amp;#39;, &amp;#39;versicolor&amp;#39;, &amp;#39;virginica&amp;#39; 
+## 
+## Pre-processing: centered (4) 
+## Resampling: Leave-One-Out Cross-Validation 
+## Summary of sample sizes: 104, 104, 104, 104, 104, 104, ... 
+## Resampling results across tuning parameters:
+## 
+##   alpha  lambda       logLoss     AUC        prAUC      Accuracy 
+##   0.10   0.000875267  0.08456169  0.9975510  0.9668227  0.9619048
+##   0.10   0.008752670  0.16367642  0.9965986  0.9649725  0.9523810
+##   0.10   0.087526699  0.38437168  0.9753741  0.9252943  0.9142857
+##   0.55   0.000875267  0.07704621  0.9976871  0.9670182  0.9619048
+##   0.55   0.008752670  0.14907364  0.9964626  0.9646381  0.9523810
+##   0.55   0.087526699  0.41343962  0.9791837  0.9312623  0.9142857
+##   1.00   0.000875267  0.07351674  0.9974150  0.9664971  0.9714286
+##   1.00   0.008752670  0.12642274  0.9961905  0.9641325  0.9523810
+##   1.00   0.087526699  0.42860156  0.9805442  0.9202896  0.9333333
+##   Kappa      Mean_F1    Mean_Sensitivity  Mean_Specificity
+##   0.9428571  0.9618736  0.9619048         0.9809524       
+##   0.9285714  0.9523712  0.9523810         0.9761905       
+##   0.8714286  0.9141280  0.9142857         0.9571429       
+##   0.9428571  0.9618736  0.9619048         0.9809524       
+##   0.9285714  0.9523712  0.9523810         0.9761905       
+##   0.8714286  0.9141280  0.9142857         0.9571429       
+##   0.9571429  0.9714227  0.9714286         0.9857143       
+##   0.9285714  0.9523712  0.9523810         0.9761905       
+##   0.9000000  0.9333197  0.9333333         0.9666667       
+##   Mean_Pos_Pred_Value  Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall
+##   0.9628720            0.9812092            0.9628720       0.9619048  
+##   0.9526144            0.9762537            0.9526144       0.9523810  
+##   0.9161184            0.9576774            0.9161184       0.9142857  
+##   0.9628720            0.9812092            0.9628720       0.9619048  
+##   0.9526144            0.9762537            0.9526144       0.9523810  
+##   0.9161184            0.9576774            0.9161184       0.9142857  
+##   0.9716776            0.9857794            0.9716776       0.9714286  
+##   0.9526144            0.9762537            0.9526144       0.9523810  
+##   0.9335512            0.9667279            0.9335512       0.9333333  
+##   Mean_Detection_Rate  Mean_Balanced_Accuracy
+##   0.3206349            0.9714286             
+##   0.3174603            0.9642857             
+##   0.3047619            0.9357143             
+##   0.3206349            0.9714286             
+##   0.3174603            0.9642857             
+##   0.3047619            0.9357143             
+##   0.3238095            0.9785714             
+##   0.3174603            0.9642857             
+##   0.3111111            0.9500000             
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final values used for the model were alpha = 1 and lambda
+##  = 0.000875267.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Test the predictive ability of the model in the testing set
+glmnet.predict &amp;lt;- predict(glmnet.model, testing.set) # Predict values in the testing set
+postResample(glmnet.predict, testing.set$Species) # the accuracy of the model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  Accuracy     Kappa 
+## 0.9777778 0.9666667&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;confusionMatrix(glmnet.predict, testing.set$Species) # Lets see the breakdown of how well our model worked&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         14         0
+##   virginica       0          1        15
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9778          
+##                  95% CI : (0.8823, 0.9994)
+##     No Information Rate : 0.3333          
+##     P-Value [Acc &amp;gt; NIR] : &amp;lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9667          
+##  Mcnemar&amp;#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            0.9333           1.0000
+## Specificity                 1.0000            1.0000           0.9667
+## Pos Pred Value              1.0000            1.0000           0.9375
+## Neg Pred Value              1.0000            0.9677           1.0000
+## Prevalence                  0.3333            0.3333           0.3333
+## Detection Rate              0.3333            0.3111           0.3333
+## Detection Prevalence        0.3333            0.3111           0.3556
+## Balanced Accuracy           1.0000            0.9667           0.9833&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;second-lets-try-a-support-vector-machine-svm&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Second, let’s try a Support Vector Machine (SVM):&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Specify the cross-validation method(s)
+train.control &amp;lt;- trainControl(method = &amp;quot;cv&amp;quot;, number = 10,
+                              classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary) # k-folds CV with k=10
+
+train.control2 &amp;lt;- trainControl(method = &amp;quot;LOOCV&amp;quot;,
+                               classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary) # leave-one-out CV
+
+## Model Tuning
+# When we run the model w/out tuning we see that the C parameter for svmLinear is held constant at 1.
+# I decided to try to tune my model by testing for a range of numbers around 1.
+svmL.info &amp;lt;- getModelInfo(&amp;quot;svmLinear&amp;quot;) #getModelInfo can be used to inspect a specific ML algorithm
+svmL.info$svmLinear$parameters #look at the algorithm parameters that can be modifed&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   parameter   class label
+## 1         C numeric  Cost&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tune.grid &amp;lt;- expand.grid(C = c(0.05, 0.1, .5, 1, 1.5))  
+
+# Use the train function to perform model training
+svm.model &amp;lt;- train(Species ~ ., 
+                  data = training.set,
+                  method = &amp;#39;svmLinear&amp;#39;,
+                  trControl = train.control2, # change this to train.control to try k-fold CV
+                  tuneGrid = tune.grid, # inputs your hyperparameters designated above
+                  preProc = c(&amp;quot;center&amp;quot;)) 
+
+# Look at the results from model training
+svm.model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Support Vector Machines with Linear Kernel 
+## 
+## 105 samples
+##   4 predictor
+##   3 classes: &amp;#39;setosa&amp;#39;, &amp;#39;versicolor&amp;#39;, &amp;#39;virginica&amp;#39; 
+## 
+## Pre-processing: centered (4) 
+## Resampling: Leave-One-Out Cross-Validation 
+## Summary of sample sizes: 104, 104, 104, 104, 104, 104, ... 
+## Resampling results across tuning parameters:
+## 
+##   C     logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1  
+##   0.05  0.1965477  0.9882993  0.9480017  0.9428571  0.9142857  0.9428571
+##   0.10  0.1503756  0.9948299  0.9615435  0.9523810  0.9285714  0.9523712
+##   0.50  0.1168253  0.9986395  0.9687804  0.9619048  0.9428571  0.9618736
+##   1.00  0.1254751  0.9961905  0.9644326  0.9523810  0.9285714  0.9523712
+##   1.50  0.1245281  0.9951020  0.9623061  0.9428571  0.9142857  0.9428105
+##   Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value
+##   0.9428571         0.9714286         0.9428571          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9619048         0.9809524         0.9628720          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9428571         0.9714286         0.9437619          
+##   Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall  Mean_Detection_Rate
+##   0.9714286            0.9428571       0.9428571    0.3142857          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9812092            0.9628720       0.9619048    0.3206349          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9716776            0.9437619       0.9428571    0.3142857          
+##   Mean_Balanced_Accuracy
+##   0.9571429             
+##   0.9642857             
+##   0.9714286             
+##   0.9642857             
+##   0.9571429             
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was C = 0.5.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Test the predictive ability of the model in the testing set
+svm.predict &amp;lt;- predict(svm.model, testing.set) # Predict values in the testing set
+postResample(svm.predict, testing.set$Species) # the accuracy of the model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  Accuracy     Kappa 
+## 0.9777778 0.9666667&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;confusionMatrix(svm.predict, testing.set$Species) # Let&amp;#39;s see the breakdown of how well our model worked&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         14         0
+##   virginica       0          1        15
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9778          
+##                  95% CI : (0.8823, 0.9994)
+##     No Information Rate : 0.3333          
+##     P-Value [Acc &amp;gt; NIR] : &amp;lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9667          
+##  Mcnemar&amp;#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            0.9333           1.0000
+## Specificity                 1.0000            1.0000           0.9667
+## Pos Pred Value              1.0000            1.0000           0.9375
+## Neg Pred Value              1.0000            0.9677           1.0000
+## Prevalence                  0.3333            0.3333           0.3333
+## Detection Rate              0.3333            0.3111           0.3333
+## Detection Prevalence        0.3333            0.3111           0.3556
+## Balanced Accuracy           1.0000            0.9667           0.9833&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;third-lets-try-a-random-forest-model&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Third, let’s try a Random Forest Model:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Specify the cross-validation method(s)
+train.control &amp;lt;- trainControl(method = &amp;quot;cv&amp;quot;, number = 10, # k-folds CV with k=10
+                              classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary) 
+
+train.control2 &amp;lt;- trainControl(method = &amp;quot;LOOCV&amp;quot;, # leave-one-out CV
+                               classProbs = TRUE,
+                               savePredictions = TRUE,
+                                summaryFunction = multiClassSummary) 
+
+# Model tuning
+rf.info &amp;lt;- getModelInfo(&amp;quot;rf&amp;quot;)
+rf.info$rf$parameters&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   parameter   class                         label
+## 1      mtry numeric #Randomly Selected Predictors&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tune.grid &amp;lt;- expand.grid(mtry = c(1, 2, 3, 4)) # number of features to use for decision
+
+# Train the Model
+rf.model &amp;lt;- train(Species ~ ., 
+                  data = training.set,
+                  method = &amp;#39;rf&amp;#39;,
+                  trControl = train.control2, # change this to train.control to try k-fold CV
+                  tuneGrid = tune.grid,
+                  preProc = c(&amp;quot;center&amp;quot;)) 
+
+# Look at the results from model training
+rf.model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Random Forest 
+## 
+## 105 samples
+##   4 predictor
+##   3 classes: &amp;#39;setosa&amp;#39;, &amp;#39;versicolor&amp;#39;, &amp;#39;virginica&amp;#39; 
+## 
+## Pre-processing: centered (4) 
+## Resampling: Leave-One-Out Cross-Validation 
+## Summary of sample sizes: 104, 104, 104, 104, 104, 104, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1  
+##   1     0.1430786  0.9936735  0.8738148  0.9428571  0.9142857  0.9428571
+##   2     0.1137301  0.9953741  0.6292710  0.9523810  0.9285714  0.9523712
+##   3     0.1156660  0.9948299  0.4091844  0.9523810  0.9285714  0.9523712
+##   4     0.1182917  0.9944218  0.3131745  0.9523810  0.9285714  0.9523712
+##   Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value
+##   0.9428571         0.9714286         0.9428571          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9523810         0.9761905         0.9526144          
+##   Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall  Mean_Detection_Rate
+##   0.9714286            0.9428571       0.9428571    0.3142857          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   Mean_Balanced_Accuracy
+##   0.9571429             
+##   0.9642857             
+##   0.9642857             
+##   0.9642857             
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was mtry = 2.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Test the predictive ability of the model in the testing set
+rf.predict &amp;lt;- predict(rf.model, testing.set) # Predict values in the testing set
+postResample(rf.predict, testing.set$Species) # the accuracy of the model&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  Accuracy     Kappa 
+## 0.9555556 0.9333333&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;confusionMatrix(rf.predict, testing.set$Species) # Let&amp;#39;s see the breakdown of how well our model worked&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         14         1
+##   virginica       0          1        14
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9556          
+##                  95% CI : (0.8485, 0.9946)
+##     No Information Rate : 0.3333          
+##     P-Value [Acc &amp;gt; NIR] : &amp;lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9333          
+##  Mcnemar&amp;#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            0.9333           0.9333
+## Specificity                 1.0000            0.9667           0.9667
+## Pos Pred Value              1.0000            0.9333           0.9333
+## Neg Pred Value              1.0000            0.9667           0.9667
+## Prevalence                  0.3333            0.3333           0.3333
+## Detection Rate              0.3333            0.3111           0.3111
+## Detection Prevalence        0.3333            0.3333           0.3333
+## Balanced Accuracy           1.0000            0.9500           0.9500&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;classification-model-comparisons-which-model-did-the-best&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Classification Model Comparisons: Which model did the best?&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Gather Accuracies
+accuracy_train &amp;lt;- c(glmnet.model$results[7,6], # Final model used was #7, accuracy is column #6
+                    svm.model$results[1,5], # final model used was #1, accuracy is column #5
+                    rf.model$results[2,5]) # final model used was #2, accuracy is column #5
+
+accuracy_test &amp;lt;- c(confusionMatrix(glmnet.predict, testing.set$Species)$overall[1],
+                   confusionMatrix(svm.predict, testing.set$Species)$overall[1],
+                   confusionMatrix(rf.predict, testing.set$Species)$overall[1])
+
+
+model_names &amp;lt;- c(&amp;quot;Elastic Net&amp;quot;, &amp;quot;SVM&amp;quot;, &amp;quot;Random Forest&amp;quot;)
+
+difference &amp;lt;- as.numeric(accuracy_test) - as.numeric(accuracy_train)
+pander(data.frame(cbind(model_names, accuracy_train, accuracy_test, difference)))&lt;/code&gt;&lt;/pre&gt;
+&lt;table style=&#34;width:96%;&#34;&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;col width=&#34;25%&#34; /&gt;
+&lt;col width=&#34;25%&#34; /&gt;
+&lt;col width=&#34;26%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;center&#34;&gt;model_names&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;accuracy_train&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;accuracy_test&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;difference&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;Elastic Net&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.971428571428571&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.977777777777778&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.00634920634920633&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;SVM&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.942857142857143&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.977777777777778&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.0349206349206349&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;Random Forest&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.952380952380952&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.955555555555556&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;0.00317460317460327&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;imputation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Imputation&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Caret&lt;/code&gt; also has the ability to impute missing data values using the &lt;code&gt;preProcess()&lt;/code&gt; function. Many machine learning algorithms require complete data and therefore it may be necessary to impute missing data where necessary.&lt;/p&gt;
+&lt;p&gt;Rather than just taking the mean or median of your variable with missing data, and imputing those numbers, Caret can use more sophisticated modeling with all of your variables to more closely estimate what the missing values may have been based on patterns in your data.&lt;/p&gt;
+&lt;p&gt;We will use the &lt;code&gt;iris&lt;/code&gt; dataset as a quick example of one method you can use to impute missing data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(12345)
+# We will load the iris dataset, but without the species variable
+iris_missing &amp;lt;- data.frame(iris[1:4]) %&amp;gt;% 
+  prodNA(noNA = 0.1) # We will use the prodNA() function from package &amp;#39;missForest&amp;#39; to produce 10% missing at random data
+
+head(iris_missing)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1           NA         3.5          1.4         0.2
+## 2          4.9         3.0           NA         0.2
+## 3          4.7         3.2          1.3          NA
+## 4           NA         3.1          1.5         0.2
+## 5          5.0         3.6          1.4          NA
+## 6          5.4         3.9          1.7          NA&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Next we set our seed for reproducibility and create a model using preProcess() and our chosen imputation, in this case bagged trees because we have multiple columns with missing data. If we had just one column with missing data we could use k nearest neighbors (knnImpute) which is faster. 
+iris_missing_model = preProcess(iris_missing, &amp;quot;bagImpute&amp;quot;)
+
+# Lastly, we need to use predict() to actually predict the missing values using the model we just created
+iris_missing_pred = predict(iris_missing_model, iris_missing)
+head(iris_missing_pred)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1     5.088508         3.5      1.40000   0.2000000
+## 2     4.900000         3.0      1.43169   0.2000000
+## 3     4.700000         3.2      1.30000   0.2382725
+## 4     4.908318         3.1      1.50000   0.2000000
+## 5     5.000000         3.6      1.40000   0.2382725
+## 6     5.400000         3.9      1.70000   0.3486346&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# We can compare with the original iris dataset
+head(iris[1:4])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1          5.1         3.5          1.4         0.2
+## 2          4.9         3.0          1.4         0.2
+## 3          4.7         3.2          1.3         0.2
+## 4          4.6         3.1          1.5         0.2
+## 5          5.0         3.6          1.4         0.2
+## 6          5.4         3.9          1.7         0.4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;Important Note:&lt;/em&gt; if you are imputing and some of your data is set up as factors, you will need to create dummy variables before imputing using &lt;code&gt;dummyVars&lt;/code&gt;. This is because the &lt;code&gt;preProcess()&lt;/code&gt; function in caret assumes that all your data is numeric.&lt;/p&gt;
+&lt;p&gt;You then use &lt;code&gt;preProcess()&lt;/code&gt; with your dummy coded dataset to figure out the imputation for your continuous variable. Once you’ve imputed your continuous variable in the dummy dataset, you can then put that imputed variable back into the original dataset without dummy coding.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;http://topepo.github.io/caret/pre-processing.html&#34;&gt;Caret- Preprocessing&lt;/a&gt; for documentation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resources&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Resources&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://topepo.github.io/caret/&#34;&gt;Kuhn, Caret Documentation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.amazon.com/dp/1491976446?tag=amz-mkt-chr-us-20&amp;amp;ascsubtag=1ba00-01000-org00-mac00-other-nomod-us000-pcomp-feature-scomp-wm-5&amp;amp;ref=aa_scomp&#34;&gt;Burger, Introduction to Machine Learning with R&lt;/a&gt; *You can get a free 10-day trial to read this book through &lt;code&gt;safari books online&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://the-eye.eu/public/Books/Programming/Machine%20Learning%20with%20R%20-%20Second%20Edition%20%5BeBook%5D.pdf&#34;&gt;Lantz, Machine Learning with R, Second Edition&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://archive.ics.uci.edu/ml/datasets.html&#34;&gt;UC Irvine, Machine Learning Data Repository&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cultural Norms</title>
+      <link>/project/cultural-norms/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0700</pubDate>
+      
+      <guid>/project/cultural-norms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Empathic Accuracy and Intergroup Relations</title>
+      <link>/project/empathic-accuracy/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0700</pubDate>
+      
+      <guid>/project/empathic-accuracy/</guid>
+      <description>&lt;p&gt;In this project, we analyzed empathic accuracy in an intergroup context. Project is ongoing.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

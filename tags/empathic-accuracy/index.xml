@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Empathic-accuracy on SL</title>
+    <link>/tags/empathic-accuracy/</link>
+    <description>Recent content in Empathic-accuracy on SL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="/tags/empathic-accuracy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Empathic Accuracy and Intergroup Relations</title>
+      <link>/project/empathic-accuracy/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0700</pubDate>
+      
+      <guid>/project/empathic-accuracy/</guid>
+      <description>In this project, we analyzed empathic accuracy in an intergroup context. Project is ongoing.</description>
+    </item>
+    
+  </channel>
+</rss>

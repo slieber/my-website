@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.42.1" />
+  <meta name="author" content="Sara Lieber">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="IntroductionMachine learning is the process of building predictive models. At the core of machine learning is building models which offer predictive power and can be used to understand data we have yet to collect. In scientific practice, we have all used machine learning before when we run regression models! However, machine learning is a complex topic with a wide range of possiblities and applications.
+We encounter applications for machine learning each day.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../post/ml-tutorial/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair&#43;Display:400,700%7cFauna&#43;One">
+  
+  <link rel="stylesheet" href="../../styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="SL">
+  <link rel="feed" href="../../index.xml" type="application/rss+xml" title="SL">
+  
+
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
+
+  <link rel="canonical" href="../../post/ml-tutorial/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Wafferrrs">
+  <meta property="twitter:creator" content="@Wafferrrs">
+  
+  <meta property="og:site_name" content="SL">
+  <meta property="og:url" content="/post/ml-tutorial/">
+  <meta property="og:title" content="Machine Learning in R Tutorial | SL">
+  <meta property="og:description" content="IntroductionMachine learning is the process of building predictive models. At the core of machine learning is building models which offer predictive power and can be used to understand data we have yet to collect. In scientific practice, we have all used machine learning before when we run regression models! However, machine learning is a complex topic with a wide range of possiblities and applications.
+We encounter applications for machine learning each day.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-06-13T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-06-13T00:00:00&#43;00:00">
+  
+
+  
+  
+
+  <title>Machine Learning in R Tutorial | SL</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" class="dark">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="../../">SL</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="../../#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="../../#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="../../#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="../../#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Machine Learning in R Tutorial</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-06-13 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Jun 13, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Sara Lieber">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    25 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Machine%20Learning%20in%20R%20Tutorial&amp;url=%2fpost%2fml-tutorial%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fml-tutorial%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fml-tutorial%2f&amp;title=Machine%20Learning%20in%20R%20Tutorial"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fml-tutorial%2f&amp;title=Machine%20Learning%20in%20R%20Tutorial"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Machine%20Learning%20in%20R%20Tutorial&amp;body=%2fpost%2fml-tutorial%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Machine learning is the process of building predictive models. At the core of machine learning is building models which offer predictive power and can be used to understand data we have yet to collect. In scientific practice, we have all used machine learning before when we run regression models! However, machine learning is a complex topic with a wide range of possiblities and applications.</p>
+<p>We encounter applications for machine learning each day. Machine learning algorithms are used to make critical decisions in medical diagnosis. Media sites rely on machine learning to sift through millions of options to give you song or movie recommendations and retailers use it to gain insight into their customers’ purchasing behavior.</p>
+<p>This presentation aims to present a basic understanding of both regression and classification modeling, as well as how to leverage the package <code>caret</code> to carryout these analyses.</p>
+<div id="supervised-vs.unsupervised-learning" class="section level3">
+<h3>Supervised vs. Unsupervised Learning</h3>
+<p>There are two main types of machine learning algorithms: <em>supervised</em> and <em>unsupervised</em></p>
+<p><strong>Supervised learning</strong> models are those where the machine learning model we build is based off of a known quantity. In this case, we already know the “correct answers” and we train the algorithm to find patterns in our data in order to reach the best performance in predicting a known quanity. We can then apply these models to never-before-seen data to make predictions. Examples include:</p>
+<ul>
+<li><p><em>Classification Models</em>: Making categorical predictions such as predicting whether a tumor is benign or malignant or whether an email is spam or not.</p></li>
+<li><p><em>Regression Models</em>: Making continuous predictions such as predicting changes in temperature or predicting someone’s weight.</p></li>
+</ul>
+<p><strong>Unsupervised learning</strong> models are those where the machine learning model derives patterns and information from data while determining the known quantity itself. In this case, there are no known “correct answers” but rather the goal is to find the underlying structure or distribution in the data in order to learn more about the data. Examples include:</p>
+<ul>
+<li><p><em>Clustering Models</em>: Finding hidden patterns of inherent groupings in data such as grouping customers by purchasing behavior.</p></li>
+<li><p><em>Association Models</em>: Findings rules that describe large portions of your data, such as “people that buy X also tend to buy Y”.</p></li>
+</ul>
+<div class="figure">
+<img src="ml_workflow.svg" />
+
+</div>
+</div>
+</div>
+<div id="steps-of-machine-learning-considerations" class="section level1">
+<h1>Steps of Machine Learning &amp; Considerations</h1>
+<ol style="list-style-type: decimal">
+<li>Data Splitting</li>
+<li>Tuning</li>
+<li>Cross-validation</li>
+<li>Model Testing</li>
+</ol>
+<div id="data-splitting-partitioning" class="section level3">
+<h3>Data Splitting/ Partitioning</h3>
+<p>Machine learning requires that you must build your model using a separate dataset than the one used to test the accuracy of your model. Since datasets can be hard to come by, data splitting is used to split a single dataset into a training set and a testing set. You typically want more data in the training set since this data is being used to build your model than in the testing set. Some proportions that are used typically are 70% training, 30% testing, but you can adjust these.</p>
+</div>
+<div id="tuning" class="section level3">
+<h3>Tuning</h3>
+<p>In machine learning, there are two types of parameters: model parameters and hyperparameters. What’s the difference?</p>
+<ul>
+<li><p>Model parameters are estimated from the data (i.e., coefficients in linear regression)</p></li>
+<li><p>Hyperparameters are values that specify the settings of a ML algorithm that can be “tuned” by the researhcer prior to training a model. Different algorithms have different hyperparameters. You don’t know the best values of hyperparameters prior to training a model - have to rely on rules of thumb and/or try to find the best values through trial and error. This is the tuning process.</p></li>
+</ul>
+</div>
+<div id="cross-validation" class="section level3">
+<h3>Cross-Validation</h3>
+<p>Earlier we talked about splitting our our dataset into training and testing sets in order to build a model that generalizess well to new incoming data. However, this process of training and testing is less than ideal. When we eventually test our data against the remaining data in our test set we are only seeing what the error is for that exact grouping of the test data. Using a single testing set to evaluate the accuracy of one’s models can have limitations in practice because the testing set may not be representative of the dataset as a whole.</p>
+<p>Cross-validation is a statistical technique for splitting the training set multiple times into training/testing sets. Each of these training/testing sets is evaluated for error, and the error across all of the sets is averaged. This provides a more accurate assessment of the model’s performance.</p>
+<p>There are various cross-validation techniques available in R, but the ones we will cover are k-fold and leave-one-one cross-validation:</p>
+<ul>
+<li><p><strong>k-fold cross-validation</strong>: randomly splits the dataset into k chunks (aka, folds) of roughly equal size, and these chunks are split into training/testing sets. The error across all chunks is averaged. k can be any number between 2 and the number of observations in the full dataset, but it is most commonly a value between 3 and 10.</p></li>
+<li><p><strong>leave-one-out cross-validation</strong>: the case where k=n; this results in the training sets containing n-1 observations each, and each test set containing a single observation</p></li>
+</ul>
+</div>
+<div id="overfitting" class="section level3">
+<h3>Overfitting</h3>
+<p>A very <strong>important</strong> consideration in the building of predictive models is overfitting. The data in the training set is going to reflect true, underlying relationships among variables, but there will also be an amount of error that is unique to the training set. <strong>Overfitting is the problem of fitting a model too well to the training set.</strong> <strong>This could result in the model having poor predictive power when applied to a new dataset.</strong> During model training, you want to meet a balance between fitting a model with good accuracy (i.e., one that reduces error), without trying to account for so much error in the training model that you overfit the model.</p>
+</div>
+</div>
+<div id="terminology-break-algorithms-vs-models" class="section level1">
+<h1>Terminology Break: Algorithms vs Models</h1>
+<ul>
+<li><p><strong>Algorithms</strong>: a set of steps that are passed into a model for processing</p></li>
+<li><p><strong>Models</strong>: a complex object that takes an input parameter and gives an output</p></li>
+<li><p><strong>Features</strong>: a variable in machine learning lingo</p></li>
+</ul>
+</div>
+<div id="common-machine-learning-algorithms" class="section level1">
+<h1>Common Machine Learning Algorithms</h1>
+<ul>
+<li><p>Linear regression, lm()</p></li>
+<li><p>Logistic regression, glm()</p></li>
+<li><p>Support vector machines, svm() or svmLinear()</p></li>
+<li><p>Random forests, randomForest()</p></li>
+<li><p>Elastic Nets, glmnet()</p></li>
+</ul>
+<p>And there are hundreds more… for a full list: names(getModelInfo())</p>
+</div>
+<div id="a-regression-example" class="section level1">
+<h1>A Regression Example</h1>
+<p>Regression is used to perform machine learning with a continuous outcome variable. The dataset we will use for this example is called Prestige from the <code>car</code> package. This dataset contains various features across a variety of occupations, such as education, percentage of incumbents who are women, and the perceived prestige of the occupation.</p>
+<pre class="r"><code>head(Prestige) </code></pre>
+<pre><code>##                     education income women prestige census type
+## gov.administrators      13.11  12351 11.16     68.8   1113 prof
+## general.managers        12.26  25879  4.02     69.1   1130 prof
+## accountants             12.77   9271 15.70     63.4   1171 prof
+## purchasing.officers     11.42   8865  9.11     56.8   1175 prof
+## chemists                14.62   8403 11.68     73.5   2111 prof
+## physicists              15.64  11030  5.13     77.6   2113 prof</code></pre>
+<pre class="r"><code>str(Prestige)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    102 obs. of  6 variables:
+##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
+##  $ income   : int  12351 25879 9271 8865 8403 11030 8258 14163 11377 11023 ...
+##  $ women    : num  11.16 4.02 15.7 9.11 11.68 ...
+##  $ prestige : num  68.8 69.1 63.4 56.8 73.5 77.6 72.6 78.1 73.1 68.8 ...
+##  $ census   : int  1113 1130 1171 1175 2111 2113 2133 2141 2143 2153 ...
+##  $ type     : Factor w/ 3 levels &quot;bc&quot;,&quot;prof&quot;,&quot;wc&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
+<pre class="r"><code>Prestige$income &lt;- as.numeric(Prestige$income)
+Prestige$census &lt;- as.numeric(Prestige$census)
+Prestige$type &lt;- as.numeric(Prestige$type)
+
+Prestige &lt;- subset(Prestige, select = c(education, income, women, prestige, census))</code></pre>
+<div id="data-splitting" class="section level2">
+<h2>Data Splitting</h2>
+<p>Before you perform model training, you should partition the original dataset into a training set and a testing set. Model training is performed only on the training set.</p>
+<p><code>createDataPartition</code> is used to split the original data into a training set and a testing set. The inputs into createDataPartition include y, times, p, and list:</p>
+<ul>
+<li><p><strong>y</strong> = the outcome variable</p></li>
+<li><p><strong>times</strong> = the number of times you want to split the data</p></li>
+<li><p><strong>p</strong> = the percentage of the data that goes into the training set</p></li>
+<li><p><strong>list</strong> = FALSE gives the results in a matrix with the row numbers of the partition that you can pass back into the training data to effectively split it</p></li>
+</ul>
+<pre class="r"><code># Randomly sample from the original dataset
+set.seed(50) # set.seed is a random number generator; the value in parentheses is arbitrary, and a seed is only set so that we can reproduce these same results next time we run the analysis.
+
+# Split the original dataset into a training set and a testing set
+partition_data &lt;- createDataPartition(Prestige$income, times = 1, p = .7, list = FALSE)
+
+training.set &lt;- Prestige[partition_data, ] # Training set
+testing.set &lt;- Prestige[-partition_data, ] # Testing set</code></pre>
+<p><strong>Now that we have split the data into a training set and testing set, we can now move on to training a model using the training set. We will go through just a few of the different algorithms and cross-validation techniques you can use for model training.</strong></p>
+</div>
+<div id="model-training-in-caret" class="section level2">
+<h2>Model Training in Caret</h2>
+<p><code>caret</code> (Classification And REgression Training) is an R package that consolidates all of the many various machine learning algorithms into one, easy-to-use interface. This allows us to test any model we want without having to load separate packages and learn a gazillion different syntax requirements each time we want to test a different type of model.</p>
+<p>The <code>train</code> function is used for model training. It uses the following inputs:</p>
+<ul>
+<li><strong>y</strong> = the outcome variable; y ~. means predict y from all other variables in the dataset</li>
+<li><strong>method</strong> = the machine learning algorithm</li>
+<li><strong>trControl</strong> = the cross-validation method</li>
+<li><strong>tuneGrid</strong> = a data frame of the hyperparameters that you want to be evaluated during model training</li>
+<li><strong>preProc</strong> = any pre-processing adjustments that you want done on the predictor data</li>
+</ul>
+<div id="first-lets-try-a-linear-regression-algorithm" class="section level3">
+<h3>First, let’s try a Linear Regression algorithm:</h3>
+<pre class="r"><code># Specify the cross-validation method(s)
+train.control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # k-folds CV with k=10
+train.control2 &lt;- trainControl(method = &quot;LOOCV&quot;) # leave-one-out CV
+
+
+# Use the train function to perform model training
+linear.model &lt;- train(income ~. , 
+                      data = training.set, 
+                      method = &quot;lm&quot;, 
+                      trControl = train.control, 
+                      preProc = c(&quot;center&quot;)) 
+
+## change train.control to train.control2 to see the results using LOOCV instead
+
+
+# Look at the results from model training
+linear.model</code></pre>
+<pre><code>## Linear Regression 
+## 
+## 74 samples
+##  4 predictor
+## 
+## Pre-processing: centered (4) 
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 67, 66, 66, 67, 67, 66, ... 
+## Resampling results:
+## 
+##   RMSE      Rsquared   MAE     
+##   2385.264  0.7565312  1644.348
+## 
+## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
+<pre class="r"><code>linear.model$results</code></pre>
+<pre><code>##   intercept     RMSE  Rsquared      MAE   RMSESD RsquaredSD    MAESD
+## 1      TRUE 2385.264 0.7565312 1644.348 1410.487  0.1716874 725.1658</code></pre>
+<pre class="r"><code># Test the predictive ability of the model in the testing set
+linear.predict &lt;- predict(linear.model, testing.set) # Predict values in the testing set
+
+postResample(linear.predict, testing.set$income) # the accuracy of the model</code></pre>
+<pre><code>##         RMSE     Rsquared          MAE 
+## 2603.8964002    0.6503883 1856.9520734</code></pre>
+</div>
+<div id="second-lets-try-a-support-vector-machine-linear-modeling-algorithm" class="section level3">
+<h3>Second, let’s try a Support Vector Machine Linear modeling algorithm:</h3>
+<pre class="r"><code># Specify the cross-validation method(s)
+train.control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # k-folds CV with k=10
+train.control2 &lt;- trainControl(method = &quot;LOOCV&quot;) # leave-one-out CV
+
+
+# The linear model did not have any hyperparameters that we could perform tuning on, but SVM does
+# Model tuning
+svmL.info &lt;- getModelInfo(&quot;svmLinear&quot;) #getModelInfo can be used to inspect a specific ML algorithm
+svmL.info$svmLinear$parameters #look at the algorithm parameters that can be modifed</code></pre>
+<pre><code>##   parameter   class label
+## 1         C numeric  Cost</code></pre>
+<pre class="r"><code>tune.grid &lt;- expand.grid(C = c(0.001, 0.01, 0.1, 1, 10, 100)) #expand.grid is the function that allows you to specify values that you want to feed into the model training function
+
+
+# Model training
+svmL.model &lt;- train(income ~. , 
+                    data = training.set, 
+                    method = &quot;svmLinear&quot;, 
+                    trControl = train.control, 
+                    tuneGrid = tune.grid, 
+                    preProc = c(&quot;center&quot;))
+
+
+# Look at the results from model training
+svmL.model</code></pre>
+<pre><code>## Support Vector Machines with Linear Kernel 
+## 
+## 74 samples
+##  4 predictor
+## 
+## Pre-processing: centered (4) 
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 66, 67, 67, 66, 66, 67, ... 
+## Resampling results across tuning parameters:
+## 
+##   C      RMSE      Rsquared   MAE     
+##   1e-03  3905.451  0.7661535  2690.535
+##   1e-02  2585.026  0.8256985  1664.158
+##   1e-01  2230.840  0.8290528  1422.342
+##   1e+00  2249.864  0.8231544  1458.861
+##   1e+01  2253.776  0.8218066  1465.532
+##   1e+02  2253.326  0.8213564  1466.097
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was C = 0.1.</code></pre>
+<pre class="r"><code>svmL.model$results</code></pre>
+<pre><code>##       C     RMSE  Rsquared      MAE   RMSESD RsquaredSD    MAESD
+## 1 1e-03 3905.451 0.7661535 2690.535 1907.103  0.1537170 731.7471
+## 2 1e-02 2585.026 0.8256985 1664.158 1885.387  0.1501561 910.9554
+## 3 1e-01 2230.840 0.8290528 1422.342 1786.866  0.1529150 868.7034
+## 4 1e+00 2249.864 0.8231544 1458.861 1750.106  0.1534310 829.3265
+## 5 1e+01 2253.776 0.8218066 1465.532 1743.592  0.1541192 824.6025
+## 6 1e+02 2253.326 0.8213564 1466.097 1742.954  0.1539033 823.7594</code></pre>
+<pre class="r"><code># Testing predictive ability of model in testing set
+svmL.predict &lt;- predict(svmL.model, testing.set) 
+
+postResample(svmL.predict, testing.set$income)</code></pre>
+<pre><code>##         RMSE     Rsquared          MAE 
+## 2073.5726601    0.6624213 1260.9135906</code></pre>
+</div>
+<div id="third-lets-try-a-random-forest-modeling-algorithm" class="section level3">
+<h3>Third, let’s try a Random Forest modeling algorithm:</h3>
+<pre class="r"><code># Specify the cross-validation method(s)
+train.control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # k-folds CV with k=10
+train.control2 &lt;- trainControl(method = &quot;LOOCV&quot;) # leave-one-out CV
+
+
+# Model tuning
+rf.info &lt;- getModelInfo(&quot;rf&quot;)
+rf.info$rf$parameters</code></pre>
+<pre><code>##   parameter   class                         label
+## 1      mtry numeric #Randomly Selected Predictors</code></pre>
+<pre class="r"><code>tune.grid &lt;- expand.grid(mtry = c(2, 3, 4))
+
+
+# Model training
+rf.model &lt;- train(income ~. , 
+                  data = training.set, 
+                  method = &quot;rf&quot;, 
+                  trControl = train.control, 
+                  tuneGrid = tune.grid,
+                  preProc = c(&quot;center&quot;))
+
+
+# Look at the results from model training
+rf.model</code></pre>
+<pre><code>## Random Forest 
+## 
+## 74 samples
+##  4 predictor
+## 
+## Pre-processing: centered (4) 
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 66, 68, 66, 67, 67, 66, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  RMSE      Rsquared   MAE     
+##   2     2663.359  0.7648934  1748.124
+##   3     2620.256  0.7683988  1701.209
+##   4     2628.885  0.7761530  1681.125
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was mtry = 3.</code></pre>
+<pre class="r"><code>rf.model$results</code></pre>
+<pre><code>##   mtry     RMSE  Rsquared      MAE   RMSESD RsquaredSD    MAESD
+## 1    2 2663.359 0.7648934 1748.124 1369.578  0.1218676 678.6863
+## 2    3 2620.256 0.7683988 1701.209 1344.739  0.1093180 667.6530
+## 3    4 2628.885 0.7761530 1681.125 1311.148  0.1030607 649.6137</code></pre>
+<pre class="r"><code># Testing predictive ability of model in testing set
+rf.predict &lt;- predict(rf.model, testing.set)
+
+postResample(rf.predict, testing.set$income) </code></pre>
+<pre><code>##         RMSE     Rsquared          MAE 
+## 2192.4297434    0.6537466 1257.4565071</code></pre>
+</div>
+<div id="regression-model-comparisons-which-model-did-the-best" class="section level3">
+<h3>Regression Model Comparisons: Which model did the best?</h3>
+<pre class="r"><code>RMSE_Training &lt;- c(linear.model$results[1,2], svmL.model$results[1,2], rf.model$results[1,2])
+
+Rsq_Training &lt;- c(linear.model$results[1,3], svmL.model$results[1,3], rf.model$results[1,3])
+
+RMSE_Testing &lt;- c(postResample(linear.predict, testing.set$income)[1], postResample(svmL.predict, testing.set$income)[1], postResample(rf.predict, testing.set$income)[1])
+
+Rsq_Testing &lt;- c(postResample(linear.predict, testing.set$income)[2], postResample(svmL.predict, testing.set$income)[2], postResample(rf.predict, testing.set$income)[2])
+
+model_names &lt;- c(&quot;Linear Regression&quot;, &quot;Support Vector Machine&quot;, &quot;Random Forest&quot;)
+
+difference_rmse &lt;- as.numeric(RMSE_Testing) - as.numeric(RMSE_Training)
+difference_rsq &lt;- as.numeric(Rsq_Testing) - as.numeric(Rsq_Training)
+
+data.frame(cbind(model_names, RMSE_Training, Rsq_Training, RMSE_Testing, Rsq_Testing, difference_rmse, difference_rsq))</code></pre>
+<pre><code>## Warning in data.row.names(row.names, rowsi, i): some row.names duplicated:
+## 2,3 --&gt; row.names NOT used</code></pre>
+<pre><code>##              model_names    RMSE_Training      Rsq_Training
+## 1      Linear Regression 2385.26433640092 0.756531232836151
+## 2 Support Vector Machine 3905.45105096938 0.766153542209208
+## 3          Random Forest 2663.35862739676 0.764893442474347
+##       RMSE_Testing       Rsq_Testing   difference_rmse     difference_rsq
+## 1 2603.89640015345 0.650388341048599  218.632063752524 -0.106142891787551
+## 2 2073.57266011341 0.662421333066346 -1831.87839085597 -0.103732209142862
+## 3 2192.42974344621 0.653746596807768  -470.92888395055 -0.111146845666579</code></pre>
+</div>
+</div>
+</div>
+<div id="a-classification-example" class="section level1">
+<h1>A Classification Example</h1>
+<p>Classification is used to perform machine learning with a categorical outcome variable. The dataset we will use for this example is called Iris from base R. This dataset contains various features for three species of flowers (petal width, petal length, sepal width, sepal length).</p>
+<p>As with our regression example above, we will try to clasify ‘Species’ of flower using an elastic net, a support vector machine, and a random forest model. We will use leave-one-out cross-validation in the training data and the final model accuracies will be tested against our holdout sample.</p>
+<p>First we will load our dataset:</p>
+<pre class="r"><code># Load the data, and examine it&#39;s structure
+iris_data &lt;- data.frame(iris)
+head(iris_data) </code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code>str(iris_data) # Everything is numeric except for our categorical variable, which is a factor. We are good to go.</code></pre>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div id="data-splitting-1" class="section level2">
+<h2>Data Splitting</h2>
+<p>Now we will set the random number generator seed for reproducibility and partition our data into training and testing sets.</p>
+<pre class="r"><code># Randomly sample from the original dataset
+set.seed(28) # set.seed is a random number generator; the value in parentheses is arbitrary, and a seed is only set so that we can reproduce these same results next time we run the analysis.
+
+# Split the original dataset into a training set and a testing set
+# We are using species to partition so that we don&#39;t end up with an uneven amount of one species in either training or testing sets.
+partition_data &lt;- createDataPartition(iris_data$Species, times = 1, p = .7, list = FALSE)
+
+# Assign sets
+training.set &lt;- iris_data[partition_data, ] # Training set
+testing.set &lt;- iris_data[-partition_data, ] # Testing set
+
+# Sanity Check: Is data partitioned appropriately, do we have equal numbers of observations for our outcome variable?
+nrow(training.set)</code></pre>
+<pre><code>## [1] 105</code></pre>
+<pre class="r"><code>summary(training.set$Species)</code></pre>
+<pre><code>##     setosa versicolor  virginica 
+##         35         35         35</code></pre>
+<pre class="r"><code>nrow(testing.set)</code></pre>
+<pre><code>## [1] 45</code></pre>
+<pre class="r"><code>summary(testing.set$Species)</code></pre>
+<pre><code>##     setosa versicolor  virginica 
+##         15         15         15</code></pre>
+</div>
+<div id="model-training-in-caret-1" class="section level2">
+<h2>Model Training in Caret</h2>
+<p>Next, we will try out our three models.</p>
+<p>Since the outcome variable we are predicting “Species” has more than two factors, we cannot use <code>glm</code> to run a logistic regression.</p>
+<p>Instead, we will use <code>glmnet</code> to run an elastic net algorithm that can handle more factors in our outcome variable.</p>
+<div id="first-lets-try-an-elastic-net" class="section level3">
+<h3>First, let’s try an Elastic Net:</h3>
+<pre class="r"><code># Specify the cross-validation method(s)
+train.control &lt;- trainControl(method = &quot;cv&quot;, number = 10, # k-folds CV with k=10
+                              classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary)# save predictions for ROC
+
+train.control2 &lt;- trainControl(method = &quot;LOOCV&quot;,
+                               classProbs = TRUE,
+                               savePredictions = TRUE,
+                               summaryFunction = multiClassSummary) # leave-one-out CV, and save predictions for ROC 
+
+# Example Model Tuning for Elastic Net
+#glmnet.info &lt;- getModelInfo(&quot;glmnet&quot;)
+#glmnet.info$glmnet$parameters
+#tune.grid &lt;- expand.grid(alpha = 0:1,
+                        # lambda = seq(0.0001, 1, length = 100))
+
+# Use the train function to perform model training
+glmnet.model &lt;- train(Species ~. , 
+                      data = training.set, 
+                      method = &quot;glmnet&quot;,
+                      trControl = train.control2, # change this to train.control to try k-fold CV
+                      #tuneGrid = tune.grid,
+                      preProc = c(&quot;center&quot;)) 
+
+# Look at the results from model training and ROC Curves
+glmnet.model</code></pre>
+<pre><code>## glmnet 
+## 
+## 105 samples
+##   4 predictor
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## Pre-processing: centered (4) 
+## Resampling: Leave-One-Out Cross-Validation 
+## Summary of sample sizes: 104, 104, 104, 104, 104, 104, ... 
+## Resampling results across tuning parameters:
+## 
+##   alpha  lambda       logLoss     AUC        prAUC      Accuracy 
+##   0.10   0.000875267  0.08456169  0.9975510  0.9668227  0.9619048
+##   0.10   0.008752670  0.16367642  0.9965986  0.9649725  0.9523810
+##   0.10   0.087526699  0.38437168  0.9753741  0.9252943  0.9142857
+##   0.55   0.000875267  0.07704621  0.9976871  0.9670182  0.9619048
+##   0.55   0.008752670  0.14907364  0.9964626  0.9646381  0.9523810
+##   0.55   0.087526699  0.41343962  0.9791837  0.9312623  0.9142857
+##   1.00   0.000875267  0.07351674  0.9974150  0.9664971  0.9714286
+##   1.00   0.008752670  0.12642274  0.9961905  0.9641325  0.9523810
+##   1.00   0.087526699  0.42860156  0.9805442  0.9202896  0.9333333
+##   Kappa      Mean_F1    Mean_Sensitivity  Mean_Specificity
+##   0.9428571  0.9618736  0.9619048         0.9809524       
+##   0.9285714  0.9523712  0.9523810         0.9761905       
+##   0.8714286  0.9141280  0.9142857         0.9571429       
+##   0.9428571  0.9618736  0.9619048         0.9809524       
+##   0.9285714  0.9523712  0.9523810         0.9761905       
+##   0.8714286  0.9141280  0.9142857         0.9571429       
+##   0.9571429  0.9714227  0.9714286         0.9857143       
+##   0.9285714  0.9523712  0.9523810         0.9761905       
+##   0.9000000  0.9333197  0.9333333         0.9666667       
+##   Mean_Pos_Pred_Value  Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall
+##   0.9628720            0.9812092            0.9628720       0.9619048  
+##   0.9526144            0.9762537            0.9526144       0.9523810  
+##   0.9161184            0.9576774            0.9161184       0.9142857  
+##   0.9628720            0.9812092            0.9628720       0.9619048  
+##   0.9526144            0.9762537            0.9526144       0.9523810  
+##   0.9161184            0.9576774            0.9161184       0.9142857  
+##   0.9716776            0.9857794            0.9716776       0.9714286  
+##   0.9526144            0.9762537            0.9526144       0.9523810  
+##   0.9335512            0.9667279            0.9335512       0.9333333  
+##   Mean_Detection_Rate  Mean_Balanced_Accuracy
+##   0.3206349            0.9714286             
+##   0.3174603            0.9642857             
+##   0.3047619            0.9357143             
+##   0.3206349            0.9714286             
+##   0.3174603            0.9642857             
+##   0.3047619            0.9357143             
+##   0.3238095            0.9785714             
+##   0.3174603            0.9642857             
+##   0.3111111            0.9500000             
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final values used for the model were alpha = 1 and lambda
+##  = 0.000875267.</code></pre>
+<pre class="r"><code># Test the predictive ability of the model in the testing set
+glmnet.predict &lt;- predict(glmnet.model, testing.set) # Predict values in the testing set
+postResample(glmnet.predict, testing.set$Species) # the accuracy of the model</code></pre>
+<pre><code>##  Accuracy     Kappa 
+## 0.9777778 0.9666667</code></pre>
+<pre class="r"><code>confusionMatrix(glmnet.predict, testing.set$Species) # Lets see the breakdown of how well our model worked</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         14         0
+##   virginica       0          1        15
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9778          
+##                  95% CI : (0.8823, 0.9994)
+##     No Information Rate : 0.3333          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9667          
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            0.9333           1.0000
+## Specificity                 1.0000            1.0000           0.9667
+## Pos Pred Value              1.0000            1.0000           0.9375
+## Neg Pred Value              1.0000            0.9677           1.0000
+## Prevalence                  0.3333            0.3333           0.3333
+## Detection Rate              0.3333            0.3111           0.3333
+## Detection Prevalence        0.3333            0.3111           0.3556
+## Balanced Accuracy           1.0000            0.9667           0.9833</code></pre>
+</div>
+<div id="second-lets-try-a-support-vector-machine-svm" class="section level3">
+<h3>Second, let’s try a Support Vector Machine (SVM):</h3>
+<pre class="r"><code># Specify the cross-validation method(s)
+train.control &lt;- trainControl(method = &quot;cv&quot;, number = 10,
+                              classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary) # k-folds CV with k=10
+
+train.control2 &lt;- trainControl(method = &quot;LOOCV&quot;,
+                               classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary) # leave-one-out CV
+
+## Model Tuning
+# When we run the model w/out tuning we see that the C parameter for svmLinear is held constant at 1.
+# I decided to try to tune my model by testing for a range of numbers around 1.
+svmL.info &lt;- getModelInfo(&quot;svmLinear&quot;) #getModelInfo can be used to inspect a specific ML algorithm
+svmL.info$svmLinear$parameters #look at the algorithm parameters that can be modifed</code></pre>
+<pre><code>##   parameter   class label
+## 1         C numeric  Cost</code></pre>
+<pre class="r"><code>tune.grid &lt;- expand.grid(C = c(0.05, 0.1, .5, 1, 1.5))  
+
+# Use the train function to perform model training
+svm.model &lt;- train(Species ~ ., 
+                  data = training.set,
+                  method = &#39;svmLinear&#39;,
+                  trControl = train.control2, # change this to train.control to try k-fold CV
+                  tuneGrid = tune.grid, # inputs your hyperparameters designated above
+                  preProc = c(&quot;center&quot;)) 
+
+# Look at the results from model training
+svm.model</code></pre>
+<pre><code>## Support Vector Machines with Linear Kernel 
+## 
+## 105 samples
+##   4 predictor
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## Pre-processing: centered (4) 
+## Resampling: Leave-One-Out Cross-Validation 
+## Summary of sample sizes: 104, 104, 104, 104, 104, 104, ... 
+## Resampling results across tuning parameters:
+## 
+##   C     logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1  
+##   0.05  0.1965477  0.9882993  0.9480017  0.9428571  0.9142857  0.9428571
+##   0.10  0.1503756  0.9948299  0.9615435  0.9523810  0.9285714  0.9523712
+##   0.50  0.1168253  0.9986395  0.9687804  0.9619048  0.9428571  0.9618736
+##   1.00  0.1254751  0.9961905  0.9644326  0.9523810  0.9285714  0.9523712
+##   1.50  0.1245281  0.9951020  0.9623061  0.9428571  0.9142857  0.9428105
+##   Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value
+##   0.9428571         0.9714286         0.9428571          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9619048         0.9809524         0.9628720          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9428571         0.9714286         0.9437619          
+##   Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall  Mean_Detection_Rate
+##   0.9714286            0.9428571       0.9428571    0.3142857          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9812092            0.9628720       0.9619048    0.3206349          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9716776            0.9437619       0.9428571    0.3142857          
+##   Mean_Balanced_Accuracy
+##   0.9571429             
+##   0.9642857             
+##   0.9714286             
+##   0.9642857             
+##   0.9571429             
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was C = 0.5.</code></pre>
+<pre class="r"><code># Test the predictive ability of the model in the testing set
+svm.predict &lt;- predict(svm.model, testing.set) # Predict values in the testing set
+postResample(svm.predict, testing.set$Species) # the accuracy of the model</code></pre>
+<pre><code>##  Accuracy     Kappa 
+## 0.9777778 0.9666667</code></pre>
+<pre class="r"><code>confusionMatrix(svm.predict, testing.set$Species) # Let&#39;s see the breakdown of how well our model worked</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         14         0
+##   virginica       0          1        15
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9778          
+##                  95% CI : (0.8823, 0.9994)
+##     No Information Rate : 0.3333          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9667          
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            0.9333           1.0000
+## Specificity                 1.0000            1.0000           0.9667
+## Pos Pred Value              1.0000            1.0000           0.9375
+## Neg Pred Value              1.0000            0.9677           1.0000
+## Prevalence                  0.3333            0.3333           0.3333
+## Detection Rate              0.3333            0.3111           0.3333
+## Detection Prevalence        0.3333            0.3111           0.3556
+## Balanced Accuracy           1.0000            0.9667           0.9833</code></pre>
+</div>
+<div id="third-lets-try-a-random-forest-model" class="section level3">
+<h3>Third, let’s try a Random Forest Model:</h3>
+<pre class="r"><code># Specify the cross-validation method(s)
+train.control &lt;- trainControl(method = &quot;cv&quot;, number = 10, # k-folds CV with k=10
+                              classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary) 
+
+train.control2 &lt;- trainControl(method = &quot;LOOCV&quot;, # leave-one-out CV
+                               classProbs = TRUE,
+                               savePredictions = TRUE,
+                                summaryFunction = multiClassSummary) 
+
+# Model tuning
+rf.info &lt;- getModelInfo(&quot;rf&quot;)
+rf.info$rf$parameters</code></pre>
+<pre><code>##   parameter   class                         label
+## 1      mtry numeric #Randomly Selected Predictors</code></pre>
+<pre class="r"><code>tune.grid &lt;- expand.grid(mtry = c(1, 2, 3, 4)) # number of features to use for decision
+
+# Train the Model
+rf.model &lt;- train(Species ~ ., 
+                  data = training.set,
+                  method = &#39;rf&#39;,
+                  trControl = train.control2, # change this to train.control to try k-fold CV
+                  tuneGrid = tune.grid,
+                  preProc = c(&quot;center&quot;)) 
+
+# Look at the results from model training
+rf.model</code></pre>
+<pre><code>## Random Forest 
+## 
+## 105 samples
+##   4 predictor
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## Pre-processing: centered (4) 
+## Resampling: Leave-One-Out Cross-Validation 
+## Summary of sample sizes: 104, 104, 104, 104, 104, 104, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1  
+##   1     0.1430786  0.9936735  0.8738148  0.9428571  0.9142857  0.9428571
+##   2     0.1137301  0.9953741  0.6292710  0.9523810  0.9285714  0.9523712
+##   3     0.1156660  0.9948299  0.4091844  0.9523810  0.9285714  0.9523712
+##   4     0.1182917  0.9944218  0.3131745  0.9523810  0.9285714  0.9523712
+##   Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value
+##   0.9428571         0.9714286         0.9428571          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9523810         0.9761905         0.9526144          
+##   0.9523810         0.9761905         0.9526144          
+##   Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall  Mean_Detection_Rate
+##   0.9714286            0.9428571       0.9428571    0.3142857          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   0.9762537            0.9526144       0.9523810    0.3174603          
+##   Mean_Balanced_Accuracy
+##   0.9571429             
+##   0.9642857             
+##   0.9642857             
+##   0.9642857             
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was mtry = 2.</code></pre>
+<pre class="r"><code># Test the predictive ability of the model in the testing set
+rf.predict &lt;- predict(rf.model, testing.set) # Predict values in the testing set
+postResample(rf.predict, testing.set$Species) # the accuracy of the model</code></pre>
+<pre><code>##  Accuracy     Kappa 
+## 0.9555556 0.9333333</code></pre>
+<pre class="r"><code>confusionMatrix(rf.predict, testing.set$Species) # Let&#39;s see the breakdown of how well our model worked</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         14         1
+##   virginica       0          1        14
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9556          
+##                  95% CI : (0.8485, 0.9946)
+##     No Information Rate : 0.3333          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9333          
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            0.9333           0.9333
+## Specificity                 1.0000            0.9667           0.9667
+## Pos Pred Value              1.0000            0.9333           0.9333
+## Neg Pred Value              1.0000            0.9667           0.9667
+## Prevalence                  0.3333            0.3333           0.3333
+## Detection Rate              0.3333            0.3111           0.3111
+## Detection Prevalence        0.3333            0.3333           0.3333
+## Balanced Accuracy           1.0000            0.9500           0.9500</code></pre>
+</div>
+<div id="classification-model-comparisons-which-model-did-the-best" class="section level3">
+<h3>Classification Model Comparisons: Which model did the best?</h3>
+<pre class="r"><code># Gather Accuracies
+accuracy_train &lt;- c(glmnet.model$results[7,6], # Final model used was #7, accuracy is column #6
+                    svm.model$results[1,5], # final model used was #1, accuracy is column #5
+                    rf.model$results[2,5]) # final model used was #2, accuracy is column #5
+
+accuracy_test &lt;- c(confusionMatrix(glmnet.predict, testing.set$Species)$overall[1],
+                   confusionMatrix(svm.predict, testing.set$Species)$overall[1],
+                   confusionMatrix(rf.predict, testing.set$Species)$overall[1])
+
+
+model_names &lt;- c(&quot;Elastic Net&quot;, &quot;SVM&quot;, &quot;Random Forest&quot;)
+
+difference &lt;- as.numeric(accuracy_test) - as.numeric(accuracy_train)
+pander(data.frame(cbind(model_names, accuracy_train, accuracy_test, difference)))</code></pre>
+<table style="width:96%;">
+<colgroup>
+<col width="19%" />
+<col width="25%" />
+<col width="25%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">model_names</th>
+<th align="center">accuracy_train</th>
+<th align="center">accuracy_test</th>
+<th align="center">difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Elastic Net</td>
+<td align="center">0.971428571428571</td>
+<td align="center">0.977777777777778</td>
+<td align="center">0.00634920634920633</td>
+</tr>
+<tr class="even">
+<td align="center">SVM</td>
+<td align="center">0.942857142857143</td>
+<td align="center">0.977777777777778</td>
+<td align="center">0.0349206349206349</td>
+</tr>
+<tr class="odd">
+<td align="center">Random Forest</td>
+<td align="center">0.952380952380952</td>
+<td align="center">0.955555555555556</td>
+<td align="center">0.00317460317460327</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="imputation" class="section level1">
+<h1>Imputation</h1>
+<p><code>Caret</code> also has the ability to impute missing data values using the <code>preProcess()</code> function. Many machine learning algorithms require complete data and therefore it may be necessary to impute missing data where necessary.</p>
+<p>Rather than just taking the mean or median of your variable with missing data, and imputing those numbers, Caret can use more sophisticated modeling with all of your variables to more closely estimate what the missing values may have been based on patterns in your data.</p>
+<p>We will use the <code>iris</code> dataset as a quick example of one method you can use to impute missing data.</p>
+<pre class="r"><code>set.seed(12345)
+# We will load the iris dataset, but without the species variable
+iris_missing &lt;- data.frame(iris[1:4]) %&gt;% 
+  prodNA(noNA = 0.1) # We will use the prodNA() function from package &#39;missForest&#39; to produce 10% missing at random data
+
+head(iris_missing)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1           NA         3.5          1.4         0.2
+## 2          4.9         3.0           NA         0.2
+## 3          4.7         3.2          1.3          NA
+## 4           NA         3.1          1.5         0.2
+## 5          5.0         3.6          1.4          NA
+## 6          5.4         3.9          1.7          NA</code></pre>
+<pre class="r"><code># Next we set our seed for reproducibility and create a model using preProcess() and our chosen imputation, in this case bagged trees because we have multiple columns with missing data. If we had just one column with missing data we could use k nearest neighbors (knnImpute) which is faster. 
+iris_missing_model = preProcess(iris_missing, &quot;bagImpute&quot;)
+
+# Lastly, we need to use predict() to actually predict the missing values using the model we just created
+iris_missing_pred = predict(iris_missing_model, iris_missing)
+head(iris_missing_pred)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1     5.088508         3.5      1.40000   0.2000000
+## 2     4.900000         3.0      1.43169   0.2000000
+## 3     4.700000         3.2      1.30000   0.2382725
+## 4     4.908318         3.1      1.50000   0.2000000
+## 5     5.000000         3.6      1.40000   0.2382725
+## 6     5.400000         3.9      1.70000   0.3486346</code></pre>
+<pre class="r"><code># We can compare with the original iris dataset
+head(iris[1:4])</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1          5.1         3.5          1.4         0.2
+## 2          4.9         3.0          1.4         0.2
+## 3          4.7         3.2          1.3         0.2
+## 4          4.6         3.1          1.5         0.2
+## 5          5.0         3.6          1.4         0.2
+## 6          5.4         3.9          1.7         0.4</code></pre>
+<p><em>Important Note:</em> if you are imputing and some of your data is set up as factors, you will need to create dummy variables before imputing using <code>dummyVars</code>. This is because the <code>preProcess()</code> function in caret assumes that all your data is numeric.</p>
+<p>You then use <code>preProcess()</code> with your dummy coded dataset to figure out the imputation for your continuous variable. Once you’ve imputed your continuous variable in the dummy dataset, you can then put that imputed variable back into the original dataset without dummy coding.</p>
+<p>See <a href="http://topepo.github.io/caret/pre-processing.html">Caret- Preprocessing</a> for documentation.</p>
+</div>
+<div id="resources" class="section level1">
+<h1>Resources</h1>
+<ul>
+<li><p><a href="https://topepo.github.io/caret/">Kuhn, Caret Documentation</a></p></li>
+<li><p><a href="https://www.amazon.com/dp/1491976446?tag=amz-mkt-chr-us-20&amp;ascsubtag=1ba00-01000-org00-mac00-other-nomod-us000-pcomp-feature-scomp-wm-5&amp;ref=aa_scomp">Burger, Introduction to Machine Learning with R</a> *You can get a free 10-day trial to read this book through <code>safari books online</code></p></li>
+<li><p><a href="https://the-eye.eu/public/Books/Programming/Machine%20Learning%20with%20R%20-%20Second%20Edition%20%5BeBook%5D.pdf">Lantz, Machine Learning with R, Second Edition</a></p></li>
+<li><p><a href="http://archive.ics.uci.edu/ml/datasets.html">UC Irvine, Machine Learning Data Repository</a></p></li>
+</ul>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="../../js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+
